@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <script>
+    function testBody(){
+      const height = parseFloat(prompt('请输入身高，m'));
+      const weight = parseFloat(prompt('请输入体重，kg'));
+
+      const BMI = weight / Math.pow(height, 2);
+
+      if(BMI < 18.5) {
+        alert('偏瘦');
+      } else if(BMI < 25) {
+        alert('正常');
+      } else if(BMI < 28) {
+        alert('过重');
+      } else if(BMI < 32) {
+        alert('肥胖');
+      } else {
+        alert('太胖了');
+      }
+    }
+  </script>
+</body>
+</html>
