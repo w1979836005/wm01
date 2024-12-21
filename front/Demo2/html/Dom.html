@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="block">默认内容</div>
+    <div class="container">
+      <p class="text">默认内容</p>
+      <p class="item">默认内容</p>
+      <p class="item">默认内容</p>
+      <p class="text">默认内容</p>
+      <p class="text">默认内容</p>
+    </div>
+    <script>
+      //DOM 操作
+      //1.获取标签id
+      let block =  document.getElementById('block');
+      console.log(block);
+      block.textContent = 'js设置的文本';
+
+      //2.通过标签名获取多个标签  这里是伪数组形式
+      var p = document.getElementsByTagName('p');
+
+        //模拟从后端拿到数据，渲染给前端页面
+      let textArr = [
+        '震山的虎',
+        '敏捷的豹',
+        '远见的鹰',
+        '善战的狼'
+      ]
+
+      for(let i = 0; i < p.length; i++) p[i].textContent = textArr[i];
+      // console.log(p);
+
+      //3.h5根据选择器获取标签   p 或者 .text  css选择器使用
+      let p2 = document.querySelectorAll('.text');
+      console.log(p2);
+
+
+      //单一的选择器
+      let p3 = document.querySelector('.item');
+      p3.textContent = '哈哈哈';
+        //网页内部关系的dom选择
+      p3.previousElementSibling.textContent='哈哈哈的上一个';
+      p3.nextElementSibling.textContent='哈哈哈的下一个';
+      div = p3.parentNode;
+      console.log(div);
+      console.log(div.children)
+    </script>
+</body>
+</html>

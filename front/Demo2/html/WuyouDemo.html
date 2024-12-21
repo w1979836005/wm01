@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    .change{
+        width: 100px;
+        line-height: 100px;
+        background-color: tomato;
+        color: #f1f1f1;
+        text-align: center;
+        transition: all 1s;
+    }
+    </style>
+</head>
+<body>
+    <div id="box">默认文本</div>
+    <script>
+        /*
+        标签内的代码需要和当前页面强相关才写在当前页面的script标签中的
+        否则写在外部的js文件中
+         */
+        let box = document.getElementById('box');
+        box.onclick = function () {
+            this.innerText='新的内容';
+            this.className='change';
+        }
+    </script>
+</body>
+</html>

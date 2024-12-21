@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>style</title>
+    <style>
+        *{
+          margin: 0;
+          padding: 0;
+        }
+        body{
+          margin: 10px;
+        }
+        div{
+          width: 100px;
+          height: 100px;
+          border: 1px dashed #ccc;
+          margin-bottom: 10px;
+        }
+        .changeStyle{
+            width: 80px;
+            height: 80px;
+            background-color: tomato;
+        }
+        .blod{
+            font-size: 20px;
+            font-weight: 700;
+        }
+        #carousel li{
+            width: 200px;
+            line-height: 200px;
+            position: absolute;
+            text-align: center;
+            text-shadow: 0 0 5px #000;
+            font-size: 35px;
+            color: #fff;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+        #carousel li:nth-child(1) {
+            background-color: #c1740f;
+        }
+        #carousel li:nth-child(2) {
+            background-color: blueviolet;
+        }
+        #carousel li:nth-child(3) {
+            background-color: #ca128a;
+        }
+        #carousel li:nth-child(4) {
+            background-color: darkseagreen;
+        }
+        #carousel li.active{
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="block">默认内容</div>
+
+    <ul id="carousel">
+        <li class="active">震山的虎</li>
+        <li>敏捷的豹</li>
+        <li>远见的鹰</li>
+        <li>善战的狼</li>
+    </ul>
+    <div class="btn" style="margin-top: 250px">
+        <button id="pre">上一张</button>
+        <button id="next">下一张</button>
+    </div>
+    <script>
+        //1.开始样式处理
+        let block = document.querySelector('#block');
+        // block.style.width = '80px';
+        // block.style.height = '80px';
+        // block.style.backgroundColor='tomato';
+        block.className = 'changeStyle';
+
+        //2.文本处理
+            //1.textContent
+        block.textContent = '嘿<span class="blod">嘿嘿</span>';
+            //2.innerHtml 生成html标签的
+        block.innerHTML = ' hey <span class="blod">哈哈</span>';
+
+        //4.事件处理
+        // block.onclick = function(){
+        //     alert('点击了');
+        // }
+        //
+        // block.onclick = function(){
+        //     alert('再次点击了');
+        // }
+            //这种会出现点击覆盖问题
+        //不会出现覆盖了
+        block.addEventListener('click', function (){
+            alert('点击了');
+        })
+
+        block.addEventListener('click', function (){
+            alert('再次点击了');
+        })
+
+     //轮播图切换案例
+        let carousel = document.querySelector('#carousel');
+        let items = carousel.children;
+        let preBtn = document.querySelector('#pre');
+        let nextBtn = document.querySelector('#next');
+
+        var index = 0;
+        nextBtn.addEventListener('click', function (){
+            items[index].className ='';
+            index ++;
+            index = index % items.length;
+            items[index].className = 'active';
+        })
+
+        preBtn.addEventListener('click', function (){
+            items[index].className = '';
+            index --;
+            if(index < 0) index = items.length - 1;
+            items[index].className = 'active';
+        })
+
+        //5.定时器
+        //延迟时间定时器
+        // setTimeout(function (){
+        //     alert('延迟1s');
+        // }, 1000)
+
+        //间隔定时器
+       // let timer =  setInterval(function (){
+       //      alert('间隔2s');
+       //  }, 2000)
+       //
+       //  setTimeout(function (){
+       //      clearInterval(timer);
+       //  }, 6000)
+
+
+        //实现自动轮播图
+        setInterval(function (){
+            items[index].className ='';
+            index ++;
+            index = index % items.length;
+            items[index].className = 'active';
+        }, 1500)
+    </script>
+</body>
+</html>
